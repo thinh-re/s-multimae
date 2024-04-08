@@ -39,13 +39,16 @@ class DPTDepth(BaseDepthModel):
         weights_path = os.path.join("weights", weights_fname)
         if not os.path.isfile(weights_path):
             from huggingface_hub import hf_hub_download
-            hf_hub_download(repo_id="RGBD-SOD/S-MultiMAE", filename=weights_fname)
-            os.system(f"mv {weights_fname} weights")
+
+            downloaded_filepath = hf_hub_download(
+                repo_id="RGBD-SOD/S-MultiMAE", filename=weights_fname
+            )
+            os.system(f'mv "{downloaded_filepath}" weights')
         omnidata_ckpt = torch.load(
             weights_path,
             map_location="cpu",
         )
-        
+
         self.model = DPTDepthModel()
         self.model.load_state_dict(omnidata_ckpt)
         self.model: DPTDepthModel = self.model.to(device).eval()
