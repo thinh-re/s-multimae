@@ -29,6 +29,7 @@ def image_inference(
         if img_file_buffer is not None:
             image = Image.open(img_file_buffer).convert("RGB")
             st.image(image, caption="RGB")
+            st.session_state.depth = None
 
     with col2:
         depth_file_buffer = st.file_uploader(
