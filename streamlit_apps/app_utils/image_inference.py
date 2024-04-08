@@ -8,9 +8,6 @@ from .base_model import BaseRGBDModel
 from .depth_model import BaseDepthModel
 from .model import base_inference
 
-if "depth" not in st.session_state:
-    st.session_state.depth = None
-
 
 def image_inference(
     depth_model: BaseDepthModel,
@@ -18,6 +15,9 @@ def image_inference(
     da: BaseDataAugmentation,
     color: np.ndarray,
 ) -> None:
+    if "depth" not in st.session_state:
+        st.session_state.depth = None
+
     col1, col2 = st.columns(2)
     image: Image = None
     # depth: Image = None
