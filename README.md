@@ -24,7 +24,14 @@ _Nguyen Truong Thinh Huynh, Van Linh Pham, Xuan Toan Mai and Tuan Anh Tran_
 | ViT-L    | 328,318,529 | Multi-GT          | [Download](https://drive.google.com/file/d/1YhAuu3DI2adPLQgbgoSt74ilZbpuKihh/view?usp=sharing) | 224x224    |
 | ViT-B    | 107,654,977 | Multi-GT          | [Download](https://drive.google.com/file/d/13Omafif3pvPKgg3Isp_srkHf8CSPx33d/view?usp=sharing) | 224x224    |
 
-## How to run
+## Demo on HuggingFace
+
+- https://huggingface.co/spaces/RGBD-SOD/S-MultiMAE
+
+![_](/docs/streamlit_samples/sample1_input.png)
+![_](/docs/streamlit_samples/sample1_results.png)
+
+## How to run locally
 
 ### Create a virtual environment
 
@@ -54,9 +61,6 @@ pip install -r requirements.txt
 ```
 streamlit run streamlit_apps/app.py --server.port 9113 --browser.gatherUsageStats False --server.fileWatcherType none
 ```
-
-![_](/docs/streamlit_samples/sample1_input.png)
-![_](/docs/streamlit_samples/sample1_results.png)
 
 ## Datasets
 
