@@ -34,10 +34,11 @@ def load_smultimae_model(
     if not os.path.isfile(ckpt_path):
         from huggingface_hub import hf_hub_download
 
-        downloaded_filepath = hf_hub_download(
-            repo_id="RGBD-SOD/S-MultiMAE", filename=weights_fname
+        hf_hub_download(
+            repo_id="RGBD-SOD/S-MultiMAE",
+            filename=weights_fname,
+            local_dir="weights",
         )
-        os.system(f'mv "{downloaded_filepath}" weights')
     assert os.path.isfile(ckpt_path)
 
     # sod_model = ModelPL.load_from_checkpoint(

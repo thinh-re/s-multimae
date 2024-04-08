@@ -40,10 +40,11 @@ class DPTDepth(BaseDepthModel):
         if not os.path.isfile(weights_path):
             from huggingface_hub import hf_hub_download
 
-            downloaded_filepath = hf_hub_download(
-                repo_id="RGBD-SOD/S-MultiMAE", filename=weights_fname
+            hf_hub_download(
+                repo_id="RGBD-SOD/S-MultiMAE",
+                filename=weights_fname,
+                local_dir="weights",
             )
-            os.system(f'mv "{downloaded_filepath}" weights')
         omnidata_ckpt = torch.load(
             weights_path,
             map_location="cpu",
