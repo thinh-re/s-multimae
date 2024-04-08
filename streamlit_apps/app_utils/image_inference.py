@@ -22,14 +22,19 @@ def image_inference(
     image: Image = None
     # depth: Image = None
 
+    def file_uploader_on_change():
+        st.session_state.depth = None
+
     with col1:
         img_file_buffer = st.file_uploader(
-            "Upload an RGB image", key="img_file_buffer", type=["png", "jpg", "jpeg"]
+            "Upload an RGB image",
+            key="img_file_buffer",
+            type=["png", "jpg", "jpeg"],
+            on_change=file_uploader_on_change,
         )
         if img_file_buffer is not None:
             image = Image.open(img_file_buffer).convert("RGB")
             st.image(image, caption="RGB")
-            st.session_state.depth = None
 
     with col2:
         depth_file_buffer = st.file_uploader(
@@ -55,7 +60,7 @@ def image_inference(
         disabled=img_file_buffer is None,
     )
     if is_predict:
-        with st.spinner("Processing..."):
+        with st.spinner("Processing... (it takes about 1-2 minutes)"):
             start_time = time.time()
             pred_depth, pred_sods, pred_sms = base_inference(
                 depth_model,
