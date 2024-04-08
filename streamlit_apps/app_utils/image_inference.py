@@ -60,7 +60,9 @@ def image_inference(
         disabled=img_file_buffer is None,
     )
     if is_predict:
-        with st.spinner("Processing... (it takes about 1-2 minutes)"):
+        with st.spinner(
+            "Processing... (It usually takes about 30s - 1 minute per a set of salient objects)"
+        ):
             start_time = time.time()
             pred_depth, pred_sods, pred_sms = base_inference(
                 depth_model,

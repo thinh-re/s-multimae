@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 ### Download trained weights
 
-- Download model weights and put it in the folder `weights`. You may also need to download the weights of [DPT model]() (a rgb2depth model). The `weights` folder will look like this:
+- Download model weights and put it in the folder `weights`. You may also need to download the weights of [DPT model](https://drive.google.com/file/d/1vU4G31_T2PJv1DkA8j-MLXfMjGa7kD3L/view?usp=sharing) (a rgb2depth model). The `weights` folder will look like this:
 
 ```bash
 ├── weights
@@ -54,6 +54,9 @@ pip install -r requirements.txt
 ```
 streamlit run streamlit_apps/app.py --server.port 9113 --browser.gatherUsageStats False --server.fileWatcherType none
 ```
+
+![_](/docs/streamlit_samples/sample1_input.png)
+![_](/docs/streamlit_samples/sample1_results.png)
 
 ## Datasets
 
@@ -71,6 +74,19 @@ streamlit run streamlit_apps/app.py --server.port 9113 --browser.gatherUsageStat
   author={Zhang, Jing and Fan, Deng-Ping and Dai, Yuchao and Yu, Xin and Zhong, Yiran and Barnes, Nick and Shao, Ling},
   booktitle={International Conference on Computer Vision (ICCV)},
   year={2021}
+}
+```
+
+## Acknowledgements
+
+S-MultiMAE is build on top of [MultiMAE](https://github.com/EPFL-VILAB/MultiMAE). We kindly thank the authors for releasing their code.
+
+```bib
+@article{bachmann2022multimae,
+  author    = {Roman Bachmann and David Mizrahi and Andrei Atanov and Amir Zamir},
+  title     = {{MultiMAE}: Multi-modal Multi-task Masked Autoencoders},
+  booktitle = {European Conference on Computer Vision},
+  year      = {2022},
 }
 ```
 
