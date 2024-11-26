@@ -39,8 +39,8 @@ _Truong Thinh Huynh Nguyen, Van Linh Pham, Xuan Toan Mai and Tuan Anh Tran_
 | ![](/docs/streamlit_samples/sample_1/rgb.jpg) | ![](/docs/streamlit_samples/sample_1/depth.jpg) | ![](/docs/streamlit_samples/sample_1/pred1.jpg) | ![](/docs/streamlit_samples/sample_1/pred2.jpg) | ![](/docs/streamlit_samples/sample_1/pred3.jpg) | ![](/docs/streamlit_samples/sample_1/pred4.jpg) |
 | ![](/docs/streamlit_samples/sample_4/rgb.jpg) | ![](/docs/streamlit_samples/sample_4/depth.jpg) | ![](/docs/streamlit_samples/sample_4/pred1.jpg) | ![](/docs/streamlit_samples/sample_4/pred2.jpg) | ![](/docs/streamlit_samples/sample_4/pred3.jpg) |  |
 | ![](/docs/streamlit_samples/sample_2/rgb.jpg) | ![](/docs/streamlit_samples/sample_2/depth.jpg) | ![](/docs/streamlit_samples/sample_2/pred1.jpg) |  |  |  |
-| ![](/docs/streamlit_samples/sample_5/rgb.jpg) | ![](/docs/streamlit_samples/sample_5/depth.jpg) | ![](/docs/streamlit_samples/sample_5/pred1.jpg) | ![](/docs/streamlit_samples/sample_5/pred2.jpg) |  |  |
 | ![](/docs/streamlit_samples/sample_3/rgb.jpg) | ![](/docs/streamlit_samples/sample_3/depth.jpg) | ![](/docs/streamlit_samples/sample_3/pred1.jpg) | ![](/docs/streamlit_samples/sample_3/pred2.jpg) | ![](/docs/streamlit_samples/sample_3/pred3.jpg) |  |
+| ![](/docs/streamlit_samples/sample_5/rgb.jpg) | ![](/docs/streamlit_samples/sample_5/depth.jpg) | ![](/docs/streamlit_samples/sample_5/pred1.jpg) | ![](/docs/streamlit_samples/sample_5/pred2.jpg) |  |  |
 
 
 <!-- ![_](/docs/streamlit_samples/sample1_input.png)
