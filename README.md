@@ -9,11 +9,17 @@ app_file: streamlit_apps/app.py
 pinned: false
 ---
 
-# S-MultiMAE
+# S-MultiMAE [ICPR-2024]
 
-This repository provides the official implementation of `S-MultiMAE A Multi-Ground Truth approach for RGB-D Saliency Detection`
+This repository provides the official implementation of `S-MultiMAE - A Multi-Ground Truth approach for RGB-D Saliency Detection`
 
-_Nguyen Truong Thinh Huynh, Van Linh Pham, Xuan Toan Mai and Tuan Anh Tran_
+Keyword: RGB-D Saliency Detection - Multimodal
+
+_Truong Thinh Huynh Nguyen, Van Linh Pham, Xuan Toan Mai and Tuan Anh Tran_
+
+![alt text](docs/figures/overview_proposed_method_v5.jpg)
+
+## Model architecture
 
 ![alt text](docs/figures/proposed_method_v5.drawio.png)
 
@@ -24,21 +30,28 @@ _Nguyen Truong Thinh Huynh, Van Linh Pham, Xuan Toan Mai and Tuan Anh Tran_
 | ViT-L    | 328,318,529 | Multi-GT          | [Download](https://drive.google.com/file/d/1YhAuu3DI2adPLQgbgoSt74ilZbpuKihh/view?usp=sharing) | 224x224    |
 | ViT-B    | 107,654,977 | Multi-GT          | [Download](https://drive.google.com/file/d/13Omafif3pvPKgg3Isp_srkHf8CSPx33d/view?usp=sharing) | 224x224    |
 
-## Demo on HuggingFace
+## Demo on HuggingFace 🤗
 
 - https://huggingface.co/spaces/RGBD-SOD/S-MultiMAE
 
-![_](/docs/streamlit_samples/sample1_input.png)
-![_](/docs/streamlit_samples/sample1_results.png)
+| RGB | Depth | Pred 1 | Pred 2 | Pred 3 | Pred 4 |
+| --- | --- | --- | --- | --- | --- |
+| ![](/docs/streamlit_samples/sample_1/rgb.jpg) | ![](/docs/streamlit_samples/sample_1/depth.jpg) | ![](/docs/streamlit_samples/sample_1/pred1.jpg) | ![](/docs/streamlit_samples/sample_1/pred2.jpg) | ![](/docs/streamlit_samples/sample_1/pred3.jpg) | ![](/docs/streamlit_samples/sample_1/pred4.jpg) |
+| ![](/docs/streamlit_samples/sample_2/rgb.jpg) | ![](/docs/streamlit_samples/sample_2/depth.jpg) | ![](/docs/streamlit_samples/sample_2/pred1.jpg) |  |  |  |
+| ![](/docs/streamlit_samples/sample_3/rgb.jpg) | ![](/docs/streamlit_samples/sample_3/depth.jpg) | ![](/docs/streamlit_samples/sample_3/pred1.jpg) | ![](/docs/streamlit_samples/sample_3/pred2.jpg) | ![](/docs/streamlit_samples/sample_3/pred3.jpg) |  |
+
+
+<!-- ![_](/docs/streamlit_samples/sample1_input.png)
+![_](/docs/streamlit_samples/sample1_results.png) -->
 
 ## How to run locally
 
 ### Create a virtual environment
 
-We recommend using python 3.10 or higher.
+We recommend using python 3.12 or higher.
 
 ```bash
-python3.10 -m venv env
+python3.12 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 ```
@@ -61,6 +74,19 @@ pip install -r requirements.txt
 ```
 streamlit run streamlit_apps/app.py --server.port 9113 --browser.gatherUsageStats False --server.fileWatcherType none
 ```
+
+## Results
+
+![](/docs/figures/diversity_test.jpg)
+
+
+### Multi-GT benchmark (which we introduce in this paper)
+
+![](/docs/figures/multi_gt_benchmark.png)
+
+### Single-GT benchmark (widely used by previous methods)
+
+![](/docs/figures/single_gt_benchmark.png)
 
 ## Datasets
 

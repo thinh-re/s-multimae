@@ -1,4 +1,4 @@
-torch==2.1.0
+torch
 torchvision
 opencv-python
 pycocotools
@@ -16,3 +16,4 @@ pytorch-lightning
 streamlit
 black
 huggingface-hub
+scikit-image

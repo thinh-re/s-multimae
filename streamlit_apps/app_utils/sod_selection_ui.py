@@ -48,7 +48,7 @@ def load_smultimae_model(
     # )
     sod_model = ModelPL(cfg)
     sod_model.model.load_state_dict(
-        torch.load(ckpt_path, map_location="cpu"), strict=False
+        torch.load(ckpt_path, map_location=device), strict=False
     )
     da = DataAugmentationV6(cfg)
     return RGBDSMultiMAEModel(cfg, sod_model), cfg, da
