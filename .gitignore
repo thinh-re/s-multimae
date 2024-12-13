@@ -3,6 +3,7 @@ __pycache__/
 *.pth
 *.pt
 
+data/
 datasets/**/benchmark/*
 datasets/**/test/*
 datasets/**/train/*
