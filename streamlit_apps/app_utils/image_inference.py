@@ -64,7 +64,7 @@ def image_inference(
             "Processing... (It usually takes about 30s - 1 minute per a set of salient objects)"
         ):
             start_time = time.time()
-            pred_depth, pred_sods, pred_sms = base_inference(
+            pred_depth, pred_sods, pred_sms, binary_masks = base_inference(
                 depth_model,
                 sod_model,
                 da,
@@ -90,7 +90,10 @@ def image_inference(
 
             sod_cols = st.columns(len(pred_sods))
 
-            for i, (pred_sod, pred_sm) in enumerate(zip(pred_sods, pred_sms)):
+            for i, (pred_sod, pred_sm, binary_mask) in enumerate(
+                zip(pred_sods, pred_sms, binary_masks)
+            ):
                 with sod_cols[i]:
                     st.image(pred_sod, "Salient Objects (Otsu threshold)")
                     st.image(pred_sm, "Salient Map")
+                    st.image(binary_mask, "Binary mask")

@@ -62,6 +62,8 @@ def base_inference(
     # Postprocessing
     sods = []
 
+    binary_masks = []
+
     for sm in sms:
         binary_mask = np.array(sm)
         t = threshold_otsu(binary_mask)
@@ -71,11 +73,15 @@ def base_inference(
         sod = apply_vis_to_image(np.array(raw_image), binary_mask, color)
         sods.append(sod)
 
+        binary_mask = np.array(binary_mask * 255, dtype=np.uint8)
+        binary_mask = np.stack((binary_mask, binary_mask, binary_mask), axis=-1)
+        binary_masks.append(binary_mask)
+
     depth = depth.permute(1, 2, 0).detach().cpu().numpy()
     depth = cv2.resize(depth, origin_size)
     depth = post_processing_depth(depth)
 
-    return depth, sods, [e / 255.0 for e in sms]
+    return depth, sods, [e / 255.0 for e in sms], binary_masks
 
 
 def transform_images(inputs: List[Image.Image], transform: nn.Module) -> Tensor:
