@@ -22,7 +22,19 @@ from PIL import Image
 
 import streamlit as st
 
-st.title("Webcam Live Feed")
+# st.set_page_config(
+#     page_title="S-MultiMAE",
+#     page_icon="🧊",
+#     layout="wide",
+#     # initial_sidebar_state="expanded",
+#     # menu_items={
+#     #     'Get Help': 'https://www.extremelycoolapp.com/help',
+#     #     'Report a bug': "https://www.extremelycoolapp.com/bug",
+#     #     'About': "# This is a header. This is an *extremely* cool app!"
+#     # }
+# )
+
+st.title("S-MultiMAE")
 FRAME_WINDOW = st.image([])
 
 # Create a pipeline
@@ -90,22 +102,26 @@ try:
             continue
 
         original_depth_image = np.asanyarray(aligned_depth_frame.get_data())
-        depth_image = np.array(original_depth_image / np.max(original_depth_image) * 256, dtype=np.uint8)
-        print(
-            "depth",
-            np.min(depth_image),
-            np.max(depth_image),
-            np.mean(depth_image),
-            depth_image.dtype,
+        depth_image = np.array(
+            original_depth_image / np.max(original_depth_image) * 256, dtype=np.uint8
         )
         color_image = np.asanyarray(color_frame.get_data())
+        color_image = np.array(color_image / np.max(color_image) * 256, dtype=np.uint8)
+        color_image = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
+        # print(
+        #     "color_image",
+        #     np.min(color_image),
+        #     np.max(color_image),
+        #     np.mean(color_image),
+        #     color_image.dtype,
+        # )
 
         if SOD:
-            start_time = time.time()
+            # start_time = time.time()
             sod_image = infer(
                 image=Image.fromarray(color_image), depth=Image.fromarray(depth_image)
             )
-            print("Processing time", time.time() - start_time)
+            # print("Processing time", time.time() - start_time)
 
         # Remove background - Set pixels further than clipping_distance to grey
         grey_color = 153
@@ -122,7 +138,8 @@ try:
         #   depth align to color on left
         #   depth on right
         depth_colormap = cv2.applyColorMap(
-            cv2.convertScaleAbs(original_depth_image, alpha=0.03), cv2.COLORMAP_DEEPGREEN
+            cv2.convertScaleAbs(original_depth_image, alpha=0.03),
+            cv2.COLORMAP_RAINBOW,
         )
         if SOD:
             images = np.hstack((color_image, depth_colormap, sod_image))

@@ -90,6 +90,11 @@ streamlit run streamlit_apps/app.py --server.port 9113 --browser.gatherUsageStat
 
 ![](/docs/figures/single_gt_benchmark.png)
 
+### Ablation study
+
+![](/docs/figures/ablation_study.png)
+
+
 ## Datasets
 
 ### COME15K dataset
