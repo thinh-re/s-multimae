@@ -1,14 +1,30 @@
-import os
 import random
 import time
 from typing import Tuple, Union
 import cv2
 import numpy as np
-import streamlit as st
 from PIL import Image
-from torch import nn
+from torch import nn, Tensor
+import torch
 
 num_format = "{:,}".format
+
+
+def to_tensor(img: Image.Image) -> Tensor:
+    # Convert the PIL image to a numpy array
+    img_array = np.array(img)
+
+    # Convert the numpy array to a PyTorch tensor
+    img_tensor = torch.from_numpy(img_array)
+
+    if len(img_tensor.shape) == 3:
+        # Transpose the tensor to have the correct shape (C, H, W)
+        img_tensor = img_tensor.permute(2, 0, 1)
+
+    # Normalize the tensor values to be between 0 and 1
+    img_tensor = img_tensor.float().div(255)
+
+    return img_tensor
 
 
 def count_parameters(model: nn.Module) -> str:
@@ -54,14 +70,6 @@ class FrameRate:
 class ImgContainer:
     img: np.ndarray = None  # raw image
     frame_rate: FrameRate = FrameRate()
-
-
-def load_video(video_path: str) -> bytes:
-    if not os.path.isfile(video_path):
-        return
-    with st.spinner(f"Loading video {video_path} ..."):
-        video_bytes = open(video_path, "rb").read()
-        st.video(video_bytes, format="video/mp4")
 
 
 def normalize(data: np.ndarray) -> np.ndarray:

@@ -28,3 +28,6 @@ tmp/
 
 wandb_cache
 script.md
+
+data/
+.vscode/

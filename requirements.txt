@@ -17,3 +17,4 @@ streamlit
 black
 huggingface-hub
 scikit-image
+# pyrealsense2
